@@ -3,6 +3,7 @@ from .constants import *
 from .data_operations import *
 from tensorflow.keras.models import load_model
 from .custom_losses import *
+from .models import *
 
 
 def subscribe(model_name=None):

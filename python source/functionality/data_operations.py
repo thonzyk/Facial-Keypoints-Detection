@@ -1,44 +1,40 @@
 import pandas as pd
-import numpy as np
-import math
-from .constants import *
-from matplotlib import pyplot as plt
-from .models import *
+
+from functionality.visualization import *
 
 
 def preprocess_data(csv_file):
     """"""
     x_train, x_val, x_test, y_train, y_val, y_test = load_train_data(csv_file)
 
-    np.save(DATA_ROOT + 'x_train.npy', x_train)
-    np.save(DATA_ROOT + 'x_val.npy', x_val)
-    np.save(DATA_ROOT + 'x_test.npy', x_test)
-    np.save(DATA_ROOT + 'y_train.npy', y_train)
-    np.save(DATA_ROOT + 'y_val.npy', y_val)
-    np.save(DATA_ROOT + 'y_test.npy', y_test)
+    np.save(OUTPUT_ROOT + 'x_train.npy', x_train)
+    np.save(OUTPUT_ROOT + 'x_val.npy', x_val)
+    np.save(OUTPUT_ROOT + 'x_test.npy', x_test)
+    np.save(OUTPUT_ROOT + 'y_train.npy', y_train)
+    np.save(OUTPUT_ROOT + 'y_val.npy', y_val)
+    np.save(OUTPUT_ROOT + 'y_test.npy', y_test)
 
 
 def load_prepared_data(directory):
     """"""
-    x_train = np.load(directory + 'x_train.npy')
-    x_val = np.load(directory + 'x_val.npy')
-    x_test = np.load(directory + 'x_test.npy')
-    y_train = np.load(directory + 'y_train.npy', allow_pickle=True)
-    y_val = np.load(directory + 'y_val.npy', allow_pickle=True)
-    y_test = np.load(directory + 'y_test.npy', allow_pickle=True)
+    x_train = np.load(directory + 'x_train.npy').astype('float32')
+    x_val = np.load(directory + 'x_val.npy').astype('float32')
+    x_test = np.load(directory + 'x_test.npy').astype('float32')
+    y_train = np.load(directory + 'y_train.npy', allow_pickle=True).astype('float32')
+    y_val = np.load(directory + 'y_val.npy', allow_pickle=True).astype('float32')
+    y_test = np.load(directory + 'y_test.npy', allow_pickle=True).astype('float32')
     return x_train, x_val, x_test, y_train, y_val, y_test
 
 
 def transform_images(images):
     # Parse pixel values from the string
     # - memory consuming operation (optimize in case of memory problems)
-    images = np.flip(np.array([pixels.split() for pixels in images]))
+    images = np.array([pixels.split() for pixels in images])
     images = images.astype('float32')
 
     image_size = int(round(math.sqrt(images.shape[-1])))
 
     images = images.reshape((images.shape[0], image_size, image_size))
-    images = np.rot90(images, 2, axes=(1, 2))
     images = np.divide(images, 255)
     images = np.expand_dims(images, axis=-1)
 
@@ -55,7 +51,12 @@ def load_train_data(csv_file):
     x = data[:, -1]
     y = data[:, :-1]
 
+    # parse images from strings
     x = transform_images(x)
+
+    # replace nan
+    y = np.nan_to_num(y, nan=0)
+    y[y != y] = -1.0
 
     x_train, x_val, x_test = split_data(x)
     y_train, y_val, y_test = split_data(y)
@@ -103,7 +104,7 @@ def split_data(data, train_portion=0.9, val_portion=None):
     split_index_1 = round(len(data[:, 0]) * train_portion)
     split_index_2 = round(len(data[:, 0]) * (train_portion + val_portion))
 
-    # TODO: more sophisticated solution
+    # TODO-refactor: more sophisticated solution
     if len(data.shape) == 3:
         train_data = data[0:split_index_1, :, :]
         val_data = data[split_index_1 + 1:split_index_2, :, :]

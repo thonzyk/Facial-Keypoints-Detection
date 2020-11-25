@@ -1,5 +1,6 @@
 DATA_ROOT = "D:\\ML-Data\\Facial Keypoints Detection\\"
 MODELS_ROOT = "D:\\ML-Models\\Facial Keypoints Detection\\"
+OUTPUT_ROOT = DATA_ROOT
 IMAGE_SIZE = (96, 96)
 Y_LENGTH = 30
 BATCH_SIZE = 26
