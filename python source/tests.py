@@ -7,10 +7,22 @@ from functionality.custom_losses import *
 import os.path
 import time
 
-x = [i for i in range(-10, 10)]
 
-x = tf.cast(x, tf.float32)
+def transform_a(x, y):
+    return x * 2, y + 1
 
-y = tf.divide(tf.add(tf.sign(x), 1.0), 2.0)
+x = np.array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0])
+y = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
 
-print("fe")
+a = tf.data.Dataset.from_tensor_slices((x, y))
+a = a.batch(3)
+# a = a.shuffle(buffer_size=6, reshuffle_each_iteration=True).batch(3)
+
+np_iter_a = a.unbatch().as_numpy_iterator()
+
+b = a.map(transform_a)
+
+np_iter_b = b.unbatch().as_numpy_iterator()
+
+
+print(b)

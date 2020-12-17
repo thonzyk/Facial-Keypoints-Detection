@@ -7,4 +7,4 @@ class TestSubscriptions(unittest.TestCase):
 
     def test_subscribe(self):
         """Tests the ´subscribe´ function"""
-        subscribe()
+        subscribe('1.9005311727523804_scale_cnn_1_1.h5')

@@ -5,6 +5,7 @@ from .constants import *
 
 y_size = tf.cast(Y_LENGTH, tf.float32)
 
+
 ## AUXILIARY FUNCTIONS
 
 def positive_sign(x):

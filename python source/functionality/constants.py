@@ -1,9 +1,12 @@
 DATA_ROOT = "D:\\ML-Data\\Facial Keypoints Detection\\"
 MODELS_ROOT = "D:\\ML-Models\\Facial Keypoints Detection\\"
 OUTPUT_ROOT = DATA_ROOT
+PROGRAM_DATA_ROOT = "C:\\Users\\42077\\Documents\\FAV\MPV\\semestralky\\3\\Facial Keypoints Detection\\python source\\data\\"
+PROGRAM_FUNC_ROOT = "C:\\Users\\42077\\Documents\\FAV\MPV\\semestralky\\3\\Facial Keypoints Detection\\python source\\functionality\\"
+PROGRAM_ROOT = "../"
 IMAGE_SIZE = (96, 96)
 Y_LENGTH = 30
-BATCH_SIZE = 26
+BATCH_SIZE = 35
 
 FEATURES_MAPPING = {
     "left_eye_center_x": 0,
@@ -69,4 +72,37 @@ FEATURES_MAPPING_2 = {
     27: "mouth_center_top_lip_y",
     28: "mouth_center_bottom_lip_x",
     29: "mouth_center_bottom_lip_y"
+}
+
+LABEL_FLIP_MAPPING = {
+    0: 2,
+    2: 0,
+    1: 3,
+    3: 1,
+    4: 8,
+    8: 4,
+    5: 9,
+    9: 5,
+    6: 10,
+    10: 6,
+    7: 11,
+    11: 7,
+    12: 16,
+    16: 12,
+    13: 17,
+    17: 13,
+    20: 20,
+    22: 24,
+    24: 22,
+    23: 25,
+    25: 23,
+    26: 28,
+    28: 26,
+    27: 29,
+    29: 27,
+    14: 18,
+    18: 14,
+    15: 19,
+    19: 15,
+    21: 21
 }
