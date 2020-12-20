@@ -4,8 +4,8 @@
 # - the roots of each directory must be set manually
 DATA_ROOT = "D:\\ML-Data\\Facial Keypoints Detection\\"
 MODELS_ROOT = "D:\\ML-Models\\Facial Keypoints Detection\\"
-PROGRAM_DATA_ROOT = "C:\\Users\\42077\\Documents\\FAV\MPV\\semestralky\\3\\Facial Keypoints Detection\\python source\\data\\"
-PROGRAM_FUNC_ROOT = "C:\\Users\\42077\\Documents\\FAV\MPV\\semestralky\\3\\Facial Keypoints Detection\\python source\\functionality\\"
+PROGRAM_DATA_ROOT = "C:\\Users\\42077\\Documents\\FAV\\MPV\\semestralky\\3\\Facial Keypoints Detection\\python source\\data\\"
+PROGRAM_FUNC_ROOT = "C:\\Users\\42077\\Documents\\FAV\\MPV\\semestralky\\3\\Facial Keypoints Detection\\python source\\functionality\\"
 PROGRAM_ROOT = "../"
 
 # Project global constants
