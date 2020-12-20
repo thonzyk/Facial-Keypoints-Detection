@@ -1,5 +1,4 @@
 import unittest
-import numpy as np
 
 from functionality.augmentation import *
 from functionality.data_operations import *
@@ -8,11 +7,8 @@ from functionality.visualization import *
 
 class TestAugmentation(unittest.TestCase):
 
-    def test_get_augment_matrix(self):
-        get_augment_matrix(10.0, 1.0, -2.0)
-
-    def test_augment_data(self, visual=True):
-        x_train, x_val, x_test, y_train, y_val, y_test = load_prepared_data(OUTPUT_ROOT)
+    def test_augment_data(self, visual=False):
+        x_train, x_val, x_test, y_train, y_val, y_test = load_prepared_data(DATA_ROOT)
 
         augment_data(x_train[1, :, :], y_train[1, :])
 
@@ -26,4 +22,5 @@ class TestAugmentation(unittest.TestCase):
         show_images(ds_train)
         show_images(ds_train_aug)
 
-        plt.show()
+        if visual:
+            plt.show()

@@ -1,23 +1,13 @@
 import unittest
-import os
-import tensorflow as tf
 
-from functionality.models import *
-from functionality.data_operations import *
-from functionality.custom_losses import *
 from functionality.data_analysis import *
 
 
 class TestData(unittest.TestCase):
     """Tests data consistency"""
 
-    def test_model_index(increase_index):
-        """Tests ´model_index.txt´ existence"""
-        model_name = get_model_name()
-        assert os.path.isfile(model_name['h5'])
-
-    def test_data_corruption(self):
-        x_train, x_val, x_test, y_train, y_val, y_test = load_prepared_data(OUTPUT_ROOT)
+    def test_data_corruption(self, visual=False):
+        x_train, x_val, x_test, y_train, y_val, y_test = load_prepared_data(DATA_ROOT)
 
         x = np.concatenate((x_train, x_val, x_test), axis=0)
         y = np.concatenate((y_train, y_val, y_test), axis=0)
@@ -46,7 +36,5 @@ class TestData(unittest.TestCase):
         y_what = y[indexes, :]
         pred_what = predictions[indexes, :]
 
-        show_images_2(x_what, y_what, pred_what, indexes)
-
-    def test_statistics(self):
-        statistics()
+        if visual:
+            show_images_2(x_what, y_what, pred_what, indexes)

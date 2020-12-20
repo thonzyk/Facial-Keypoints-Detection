@@ -1,6 +1,8 @@
-from functionality.custom_losses import *
 import unittest
+
 import numpy as np
+
+from functionality.custom_losses import *
 
 MAX_ERR = pow(10.0, -6.0)
 

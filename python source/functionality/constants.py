@@ -1,13 +1,19 @@
+"""Constants"""
+
+# Program directory roots
+# - the roots of each directory must be set manually
 DATA_ROOT = "D:\\ML-Data\\Facial Keypoints Detection\\"
 MODELS_ROOT = "D:\\ML-Models\\Facial Keypoints Detection\\"
-OUTPUT_ROOT = DATA_ROOT
 PROGRAM_DATA_ROOT = "C:\\Users\\42077\\Documents\\FAV\MPV\\semestralky\\3\\Facial Keypoints Detection\\python source\\data\\"
 PROGRAM_FUNC_ROOT = "C:\\Users\\42077\\Documents\\FAV\MPV\\semestralky\\3\\Facial Keypoints Detection\\python source\\functionality\\"
 PROGRAM_ROOT = "../"
+
+# Project global constants
 IMAGE_SIZE = (96, 96)
 Y_LENGTH = 30
 BATCH_SIZE = 35
 
+# Data mappings
 FEATURES_MAPPING = {
     "left_eye_center_x": 0,
     "left_eye_center_y": 1,

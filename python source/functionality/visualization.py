@@ -1,6 +1,6 @@
-from matplotlib import pyplot as plt
-import math
 import numpy as np
+from matplotlib import pyplot as plt
+
 from .constants import *
 
 MAX_IMAGES_IN_FIGURE = 16

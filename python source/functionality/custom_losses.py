@@ -1,20 +1,23 @@
 """Custom loss functions"""
 
 import tensorflow as tf
+
 from .constants import *
 
 y_size = tf.cast(Y_LENGTH, tf.float32)
 
 
-## AUXILIARY FUNCTIONS
-
 def positive_sign(x):
+    """Returns positive sign of input
+       - 0 if input < 0
+       - +1 if input > 0"""
+
     return tf.divide(tf.add(tf.sign(x), 1.0), 2.0)
 
 
-## LOSSES
-
 def custom_mse(y_true, y_predict):
+    """Returns mean squared error of the two input values"""
+
     diff = tf.subtract(y_true, y_predict)
     return tf.reduce_mean(tf.pow(diff, 2.0), axis=-1)
 

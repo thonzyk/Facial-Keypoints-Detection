@@ -1,7 +1,7 @@
 import random
-from .visualization import *
-from .models import *
+
 from .data_operations import *
+from .models import *
 
 
 def inspect_data(x, y):
@@ -11,7 +11,7 @@ def inspect_data(x, y):
 
 
 def statistics():
-    x_train, x_val, x_test, y_train, y_val, y_test = load_prepared_data(OUTPUT_ROOT)
+    x_train, x_val, x_test, y_train, y_val, y_test = load_prepared_data(DATA_ROOT)
 
     x = np.concatenate((x_train, x_val, x_test), axis=0)
     y = np.concatenate((y_train, y_val, y_test), axis=0)

@@ -1,5 +1,6 @@
-from functionality.deployment import *
 import unittest
+
+from functionality.deployment import *
 
 
 class TestDeployment(unittest.TestCase):

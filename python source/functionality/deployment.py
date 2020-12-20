@@ -1,10 +1,16 @@
+"""Deployment"""
+
 from .constants import *
 
+# Constants
 notebook_name = "notebook.txt"
 order_file_name = "to_notebook_order.txt"
 
 
 def create_notebook():
+    """Generates flat-structure python script from the project.
+       - script can be executed on the target machine"""
+
     files_to_transfer = []
     f = open(PROGRAM_DATA_ROOT + order_file_name, "r")
     for line in f:

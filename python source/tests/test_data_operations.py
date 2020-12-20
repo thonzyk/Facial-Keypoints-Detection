@@ -1,5 +1,6 @@
-from functionality.data_operations import *
 import unittest
+
+from functionality.data_operations import *
 
 
 class TestDataOperations(unittest.TestCase):
